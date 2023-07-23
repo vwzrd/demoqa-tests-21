@@ -22,6 +22,7 @@ public class PracticeFormTests {
 
     @Test
     void fillPracticeForm() {
+
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
