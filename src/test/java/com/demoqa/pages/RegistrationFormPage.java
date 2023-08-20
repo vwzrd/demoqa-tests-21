@@ -32,10 +32,14 @@ public class RegistrationFormPage {
 
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text(TITLE_TEXT));
-        executeJavaScript("$('footer').remove()");
-        executeJavaScript("$('#fixedban').remove()");
+        removeBanner();
 
         return this;
+    }
+
+    public void removeBanner() {
+        executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixedban').remove()");
     }
 
 
