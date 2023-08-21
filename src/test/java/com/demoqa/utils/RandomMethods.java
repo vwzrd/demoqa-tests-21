@@ -4,35 +4,14 @@ package com.demoqa.utils;
 import com.github.javafaker.Faker;
 
 
+
 public class RandomMethods {
 
     Faker faker = new Faker();
-    DataArrays arrays = new DataArrays();
-
-
-    public int getRandomInt(int min, int max) {
-
-        return faker.number().numberBetween(min, max);
-    }
-
-    public String getRandomItemFromArray(String[] array) {
-
-        return faker.options().option(array);
-    }
-
-    /* public String[] removeSelectedValueFromArray(String[] array, String value) {
-        ArrayList<String> list = new ArrayList<>(Arrays.asList(array));
-        list.remove(value);
-        String[] newArray = list.toArray(new String[0]);
-
-        return newArray;
-    }*/
-
-
 
     public String getRandomGender() {
-
-        return getRandomItemFromArray(arrays.gendersArray);
+        String[] genders = {"Male", "Female", "Other"};
+        return faker.options().option(genders);
     }
 
     public String getRandomLastName() {
@@ -53,12 +32,17 @@ public class RandomMethods {
 
     public String getRandomPhoneNumber() {
 
-        return faker.phoneNumber().subscriberNumber(10).toString();
+        return faker.phoneNumber().subscriberNumber(10);
     }
 
     public String getRandomDay() {
 
-        return faker.number().numberBetween(1, 28) + "";
+        String day = faker.number().numberBetween(1, 28) + "";
+        if (Integer.valueOf(day) < 10) {
+            return "0" + day;
+        }
+        return day;
+
     }
 
     public String getRandomYear() {
@@ -67,8 +51,9 @@ public class RandomMethods {
     }
 
     public String getRandomMonth() {
-
-        return getRandomItemFromArray(arrays.monthsArray);
+        String[] months = {"January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "December"};
+        return faker.options().option(months);
     }
     public String getRandomAddress() {
 
@@ -76,18 +61,42 @@ public class RandomMethods {
     }
 
     public String getRandomSubject() {
-
-        return getRandomItemFromArray(arrays.subjectsArray);
+        String[] subjects = {"English", "Chemistry", "Computer Science", "Commerce",
+                "Economics", "Social Studies", "Maths", "Accounting", "Arts",
+                "Physics", "History, Civics", "Hindi", "Biology"};
+        return faker.options().option(subjects);
     }
 
-
     public String getRandomHobby() {
-
-        return getRandomItemFromArray(arrays.hobbiesArray);
+        String[] hobbies = {"Sports", "Reading", "Music"};
+        return faker.options().option(hobbies);
     }
 
     public String getRandomState() {
-        return getRandomItemFromArray(arrays.stateArray);
+        String[] states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
+        return faker.options().option(states);
+    }
+
+    public String getRandomCity(String state) {
+        switch (state) {
+            case "NCR": {;
+                String[] ncr = {"Delhi", "Gurgaon","Noida"};
+                return faker.options().option(ncr);
+            }
+            case "Uttar Pradesh": {
+                String[] uttarPradesh = {"Agra","Lucknow", "Merrut"};
+                return faker.options().option(uttarPradesh);
+            }
+            case "Haryana": {
+                String[] haryana = {"Karnal", "Panipat"};
+                return faker.options().option(haryana);
+            }
+            case "Rajasthan": {
+                String[] rajasthan = {"Jaipur", "Jaiselmer"};
+                return faker.options().option(rajasthan);
+            }
+        }
+        return null;
     }
 
 }

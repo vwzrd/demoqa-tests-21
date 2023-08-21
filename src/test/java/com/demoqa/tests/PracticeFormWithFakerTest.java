@@ -4,7 +4,7 @@ import com.demoqa.pages.RegistrationFormPage;
 import com.demoqa.utils.RandomData;
 import org.junit.jupiter.api.Test;
 
-public class PracticeFormTestsWithFaker extends TestBase {
+public class PracticeFormWithFakerTest extends TestBase {
 
     @Test
     void fillPracticeForm() {
