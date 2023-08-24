@@ -79,7 +79,7 @@ public class RandomMethods {
 
     public String getRandomCity(String state) {
         switch (state) {
-            case "NCR": {;
+            case "NCR": {
                 String[] ncr = {"Delhi", "Gurgaon","Noida"};
                 return faker.options().option(ncr);
             }
