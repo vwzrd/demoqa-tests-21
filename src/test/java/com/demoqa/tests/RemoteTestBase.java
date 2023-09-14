@@ -20,7 +20,7 @@ public class RemoteTestBase {
         Configuration.browserVersion = System.getProperty("browser_version", "100");
         Configuration.pageLoadStrategy = "eager";
         Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.baseUrl = System.getProperty("base_url");
+        Configuration.baseUrl = System.getProperty("base_url", "https://demoqa.com/");
         Configuration.remote = System.getProperty("remote_driver");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
