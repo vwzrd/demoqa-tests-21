@@ -35,10 +35,6 @@ dependencies {
     testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.9.2')
 }
 
-test {
-    useJUnitPlatform()
-    systemProperties(System.getProperties())
-}
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8' // для кириллицы
@@ -47,6 +43,12 @@ tasks.withType(JavaCompile) {
 task remote_test (type: Test) {
     useJUnitPlatform{
         includeTags("remote")
+    }
+}
+
+task local_test (type: Test) {
+    useJUnitPlatform{
+        includeTags("local")
     }
 }
 
