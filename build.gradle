@@ -40,6 +40,11 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8' // для кириллицы
 }
 
+tasks.withType(Test) {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+}
+
 task remote_test (type: Test) {
     useJUnitPlatform{
         includeTags("remote")
@@ -52,7 +57,4 @@ task local_test (type: Test) {
     }
 }
 
-tasks.withType(Test) {
-    useJUnitPlatform()
-    systemProperties(System.getProperties())
-}
+
